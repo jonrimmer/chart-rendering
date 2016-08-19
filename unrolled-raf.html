@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8" >
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+      }
+
+      .chart {
+        flex: 1;
+        position: relative;
+      }
+
+      .inner {
+        background: gray;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chart" id="c1">
+      <div class="inner"></div>
+    </div>
+    <div class="chart" id="c2">
+      <div class="inner"></div>
+    </div>
+    <script>
+      requestAnimationFrame(function () {
+        var c1 = document.getElementById('c1');
+        var c2 = document.getElementById('c2');
+
+        var c1i = c1.querySelector('.inner');
+        var c2i = c2.querySelector('.inner');
+
+        var c1bounds = c1.getBoundingClientRect();
+        var c2bounds = c2.getBoundingClientRect();
+
+        c1i.style.width = (c1bounds.width - 30) + 'px';
+        c1i.style.height = (c1bounds.height - 40) + 'px';
+
+        c2i.style.width = (c2bounds.width - 30) + 'px';
+        c2i.style.height = (c2bounds.height - 40) + 'px';
+      });
+    </script>
+  </body>
+</html>
